@@ -1,5 +1,5 @@
 from django.db import models
-from datetime import datetime
+from django.utils import timezone
 
 
 class Advisor(models.Model):
@@ -10,7 +10,7 @@ class Advisor(models.Model):
     phone = models.CharField(max_length=20)
     email = models.CharField(max_length=100)
     is_mvp = models.BooleanField(default=False)
-    hire_date = models.DateField(default=datetime.now, blank=True)
+    hire_date = models.DateField(default=timezone.now, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

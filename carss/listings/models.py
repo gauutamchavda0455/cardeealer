@@ -1,10 +1,10 @@
 from django.db import models
-from datetime import datetime
+from django.utils import timezone
 from advisors.models import Advisor
 
 
 class Listing(models.Model):
-    advisor = models.ForeignKey(Advisor, on_delete=models.DO_NOTHING)
+    advisor = models.ForeignKey(Advisor, on_delete=models.CASCADE)
     vin = models.CharField(max_length=17)
     condition = models.CharField(max_length=4)
     body_style = models.CharField(max_length=50)
@@ -25,7 +25,7 @@ class Listing(models.Model):
     photo_3 = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
     photo_4 = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
     is_published = models.BooleanField(default=True)
-    list_date = models.DateTimeField(default=datetime.now, blank=True)
+    list_date = models.DateTimeField(default=timezone.now, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

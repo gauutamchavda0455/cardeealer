@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carss | Search Results</title>
+  <link rel="icon" type="image/x-icon" href="/static/img/favicon.ico">
+  <link rel="stylesheet" href="/static/css/all.css">
+  <link rel="stylesheet" href="/static/css/bootstrap.css">
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  {%include partials/topbar.html%}
+  {%include partials/navbar.html%}
+  {{messages}}
+
+  <!-- Header -->
+  <section class="py-4" style="background: url('/static/img/road_2.jpg') no-repeat center center/cover; min-height:200px;">
+    <div class="container">
+      <h1 class="text-white text-center">Search Results</h1>
+    </div>
+  </section>
+
+  <!-- Search Form -->
+  <section class="py-4 bg-light">
+    <div class="container">
+      <form action="/listings/search" method="GET">
+        <div class="form-row">
+          <div class="col-md-4 mb-3">
+            <select name="condition" class="form-control">
+              <option value="">Condition (All)</option>
+              <option value="New" {{condition_new}}>New</option>
+              <option value="Used" {{condition_used}}>Used</option>
+            </select>
+          </div>
+          <div class="col-md-4 mb-3">
+            <select name="make" class="form-control">
+              <option value="">Make (All)</option>
+              {{make_options}}
+            </select>
+          </div>
+          <div class="col-md-4 mb-3">
+            <input type="number" name="price" class="form-control" placeholder="Max Price" value="{{price_value}}">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col-md-4 mb-3">
+            <select name="body_style" class="form-control">
+              <option value="">Body Style (All)</option>
+              {{body_style_options}}
+            </select>
+          </div>
+          <div class="col-md-4 mb-3">
+            <select name="fuel" class="form-control">
+              <option value="">Fuel Type (All)</option>
+              {{fuel_options}}
+            </select>
+          </div>
+          <div class="col-md-4 mb-3">
+            <select name="transmission" class="form-control">
+              <option value="">Transmission (All)</option>
+              {{transmission_options}}
+            </select>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-secondary btn-block">Search</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Results -->
+  <section class="py-5">
+    <div class="container">
+      <p class="text-muted">{{result_count}} results found</p>
+      <div class="row">
+        {{listings}}
+      </div>
+    </div>
+  </section>
+
+  {%include partials/footer.html%}
+
+  <script src="/static/js/jquery-3.3.1.min.js"></script>
+  <script src="/static/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

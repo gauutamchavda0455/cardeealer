@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carss | {{title}}</title>
+  <link rel="icon" type="image/x-icon" href="/static/img/favicon.ico">
+  <link rel="stylesheet" href="/static/css/all.css">
+  <link rel="stylesheet" href="/static/css/bootstrap.css">
+  <link rel="stylesheet" href="/static/css/lightbox.min.css">
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  {%include partials/topbar.html%}
+  {%include partials/navbar.html%}
+  {{messages}}
+
+  <!-- Breadcrumb -->
+  <section class="py-3 bg-light">
+    <div class="container">
+      <nav>
+        <ol class="breadcrumb mb-0">
+          <li class="breadcrumb-item"><a href="/">Home</a></li>
+          <li class="breadcrumb-item"><a href="/listings">Listings</a></li>
+          <li class="breadcrumb-item active">{{title}}</li>
+        </ol>
+      </nav>
+    </div>
+  </section>
+
+  <!-- Listing Detail -->
+  <section class="py-5">
+    <div class="container">
+      <div class="row">
+        <!-- Main Content -->
+        <div class="col-md-8">
+          <h2>{{title}}</h2>
+          <h3 class="text-primary mb-4">&#8377; {{price}}</h3>
+
+          <!-- Main Photo -->
+          <a href="/media/{{photo_main}}" data-lightbox="car-photos">
+            <img src="/media/{{photo_main}}" class="img-fluid rounded mb-3" alt="{{title}}">
+          </a>
+
+          <!-- Photo Gallery -->
+          <div class="row mb-4">
+            {{photos}}
+          </div>
+
+          <!-- Description -->
+          <h4>Description</h4>
+          <p>{{description}}</p>
+
+          <!-- Specifications -->
+          <h4 class="mt-4">Specifications</h4>
+          <div class="row">
+            <div class="col-md-6">
+              <table class="table">
+                <tr><th>Condition</th><td>{{condition}}</td></tr>
+                <tr><th>Year</th><td>{{year}}</td></tr>
+                <tr><th>Make</th><td>{{make}}</td></tr>
+                <tr><th>Model</th><td>{{model}}</td></tr>
+                <tr><th>Body Style</th><td>{{body_style}}</td></tr>
+                <tr><th>VIN</th><td>{{vin}}</td></tr>
+              </table>
+            </div>
+            <div class="col-md-6">
+              <table class="table">
+                <tr><th>Color</th><td>{{color}}</td></tr>
+                <tr><th>Interior</th><td>{{interior_color}}</td></tr>
+                <tr><th>Fuel</th><td>{{fuel}}</td></tr>
+                <tr><th>Transmission</th><td>{{transmission}}</td></tr>
+                <tr><th>Drivetrain</th><td>{{drivetrain}}</td></tr>
+                <tr><th>Mileage</th><td>{{mileage}} Km</td></tr>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="col-md-4">
+          {{advisor}}
+
+          <!-- Test Drive Button -->
+          <button class="btn btn-primary btn-block btn-lg mb-3" data-toggle="modal" data-target="#testDriveModal">
+            <i class="fas fa-car"></i> Schedule A Test Drive
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Test Drive Modal -->
+  <div class="modal fade" id="testDriveModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Schedule A Test Drive</h5>
+          <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+        </div>
+        <form action="/contacts/contact" method="POST">
+          <div class="modal-body">
+            <input type="hidden" name="listing" value="{{title}}">
+            <input type="hidden" name="listing_id" value="{{id}}">
+            <input type="hidden" name="user_id" value="{{user_id}}">
+            <div class="form-group">
+              <label>Name *</label>
+              <input type="text" name="name" class="form-control" value="{{user_name}}" required>
+            </div>
+            <div class="form-group">
+              <label>Email *</label>
+              <input type="email" name="email" class="form-control" value="{{user_email}}" required>
+            </div>
+            <div class="form-group">
+              <label>Phone *</label>
+              <input type="text" name="phone" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label>Message</label>
+              <textarea name="message" class="form-control" rows="3"></textarea>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Submit Request</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  {%include partials/footer.html%}
+
+  <script src="/static/js/jquery-3.3.1.min.js"></script>
+  <script src="/static/js/bootstrap.bundle.min.js"></script>
+  <script src="/static/js/lightbox.min.js"></script>
+</body>
+</html>

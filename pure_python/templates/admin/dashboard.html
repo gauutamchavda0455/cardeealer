@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carss Admin | Dashboard</title>
+  <link rel="stylesheet" href="/static/css/bootstrap.css">
+  <link rel="stylesheet" href="/static/css/all.css">
+  <style>
+    .sidebar { background: #2c3e50; min-height: 100vh; }
+    .sidebar a { color: #ecf0f1; display: block; padding: 12px 20px; text-decoration: none; border-bottom: 1px solid #34495e; }
+    .sidebar a:hover, .sidebar a.active { background: #34495e; color: #fff; }
+    .stat-card { border-left: 4px solid; }
+    .stat-card.blue { border-left-color: #3498db; }
+    .stat-card.green { border-left-color: #2ecc71; }
+    .stat-card.orange { border-left-color: #e67e22; }
+    .stat-card.red { border-left-color: #e74c3c; }
+  </style>
+</head>
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <!-- Sidebar -->
+      <div class="col-md-2 sidebar p-0">
+        <div class="text-center py-3 text-white">
+          <h4><i class="fas fa-cog"></i> Carss Admin</h4>
+        </div>
+        <a href="/admin/dashboard" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+        <a href="/admin/listings"><i class="fas fa-car"></i> Listings</a>
+        <a href="/admin/advisors"><i class="fas fa-users"></i> Advisors</a>
+        <a href="/admin/contacts"><i class="fas fa-envelope"></i> Contacts</a>
+        <hr style="border-color:#34495e;">
+        <a href="/"><i class="fas fa-globe"></i> View Site</a>
+        <a href="/admin/logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+      </div>
+
+      <!-- Main Content -->
+      <div class="col-md-10 p-4">
+        {{messages}}
+        <h2>Dashboard</h2>
+        <p class="text-muted">Welcome, {{admin_user}}</p>
+        <hr>
+
+        <div class="row">
+          <div class="col-md-3 mb-4">
+            <div class="card stat-card blue shadow-sm">
+              <div class="card-body">
+                <h5 class="text-muted">Listings</h5>
+                <h2>{{listing_count}}</h2>
+                <a href="/admin/listings" class="text-primary">Manage <i class="fas fa-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-4">
+            <div class="card stat-card green shadow-sm">
+              <div class="card-body">
+                <h5 class="text-muted">Advisors</h5>
+                <h2>{{advisor_count}}</h2>
+                <a href="/admin/advisors" class="text-success">Manage <i class="fas fa-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-4">
+            <div class="card stat-card orange shadow-sm">
+              <div class="card-body">
+                <h5 class="text-muted">Contacts</h5>
+                <h2>{{contact_count}}</h2>
+                <a href="/admin/contacts" class="text-warning">Manage <i class="fas fa-arrow-right"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-4">
+            <div class="card stat-card red shadow-sm">
+              <div class="card-body">
+                <h5 class="text-muted">Users</h5>
+                <h2>{{user_count}}</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <script src="/static/js/jquery-3.3.1.min.js"></script>
+  <script src="/static/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

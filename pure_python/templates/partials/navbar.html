@@ -1,0 +1,27 @@
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <img src="/static/img/logo.png" alt="Carss" width="100" class="logo">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item {{nav_home_active}}">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item {{nav_about_active}}">
+          <a class="nav-link" href="/about">About</a>
+        </li>
+        <li class="nav-item {{nav_listings_active}}">
+          <a class="nav-link" href="/listings">Featured Listings</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        {{nav_auth_links}}
+      </ul>
+    </div>
+  </div>
+</nav>

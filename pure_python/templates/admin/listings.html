@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carss Admin | Listings</title>
+  <link rel="stylesheet" href="/static/css/bootstrap.css">
+  <link rel="stylesheet" href="/static/css/all.css">
+  <style>
+    .sidebar { background: #2c3e50; min-height: 100vh; }
+    .sidebar a { color: #ecf0f1; display: block; padding: 12px 20px; text-decoration: none; border-bottom: 1px solid #34495e; }
+    .sidebar a:hover, .sidebar a.active { background: #34495e; color: #fff; }
+  </style>
+</head>
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-2 sidebar p-0">
+        <div class="text-center py-3 text-white"><h4><i class="fas fa-cog"></i> Carss Admin</h4></div>
+        <a href="/admin/dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+        <a href="/admin/listings" class="active"><i class="fas fa-car"></i> Listings</a>
+        <a href="/admin/advisors"><i class="fas fa-users"></i> Advisors</a>
+        <a href="/admin/contacts"><i class="fas fa-envelope"></i> Contacts</a>
+        <hr style="border-color:#34495e;">
+        <a href="/"><i class="fas fa-globe"></i> View Site</a>
+        <a href="/admin/logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+      </div>
+
+      <div class="col-md-10 p-4">
+        {{messages}}
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h2><i class="fas fa-car"></i> Listings ({{count}})</h2>
+          <a href="/admin/listings/add" class="btn btn-success"><i class="fas fa-plus"></i> Add Listing</a>
+        </div>
+        <div class="table-responsive">
+          <table class="table table-striped table-bordered">
+            <thead class="thead-dark">
+              <tr>
+                <th>ID</th><th>VIN</th><th>Year</th><th>Make</th><th>Model</th>
+                <th>Color</th><th>Condition</th><th>Price</th><th>Advisor</th>
+                <th>Published</th><th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{rows}}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="/static/js/jquery-3.3.1.min.js"></script>
+  <script src="/static/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carss | About</title>
+  <link rel="icon" type="image/x-icon" href="/static/img/favicon.ico">
+  <link rel="stylesheet" href="/static/css/all.css">
+  <link rel="stylesheet" href="/static/css/bootstrap.css">
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  {%include partials/topbar.html%}
+  {%include partials/navbar.html%}
+  {{messages}}
+
+  <!-- About Header -->
+  <section class="py-4" style="background: url('/static/img/road_2.jpg') no-repeat center center/cover; min-height:200px;">
+    <div class="container">
+      <h1 class="text-white text-center">About Carss</h1>
+    </div>
+  </section>
+
+  <!-- About Content -->
+  <section class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <h2>We Find The Best Cars For You</h2>
+          <p class="lead">
+            Carss is a premium car dealership that has been serving customers for over 10 years.
+            We pride ourselves on providing the best selection of new and used vehicles at competitive prices.
+            Our team of expert advisors is here to help you find the perfect car that fits your needs and budget.
+          </p>
+          <img src="/static/img/about.jpg" class="img-fluid rounded mb-4" alt="About Carss">
+        </div>
+        <div class="col-md-4">
+          <h3 class="text-center mb-3">Seller Of The Month</h3>
+          {{mvp}}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section class="py-5 bg-light">
+    <div class="container">
+      <h2 class="text-center mb-4">Our Team</h2>
+      <div class="row">
+        {{advisors}}
+      </div>
+    </div>
+  </section>
+
+  {%include partials/footer.html%}
+
+  <script src="/static/js/jquery-3.3.1.min.js"></script>
+  <script src="/static/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

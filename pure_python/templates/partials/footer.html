@@ -1,0 +1,17 @@
+<!-- Footer -->
+<footer class="py-4 bg-primary text-white text-center">
+  <div class="container">
+    <p class="m-0">Copyright &copy; Carss <span id="year"></span></p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  // Auto close alerts after 3 seconds
+  setTimeout(function() {
+    var alerts = document.querySelectorAll('.alert');
+    alerts.forEach(function(alert) {
+      alert.style.display = 'none';
+    });
+  }, 3000);
+</script>

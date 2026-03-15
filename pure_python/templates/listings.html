@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carss | Browse Cars</title>
+  <link rel="icon" type="image/x-icon" href="/static/img/favicon.ico">
+  <link rel="stylesheet" href="/static/css/all.css">
+  <link rel="stylesheet" href="/static/css/bootstrap.css">
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  {%include partials/topbar.html%}
+  {%include partials/navbar.html%}
+  {{messages}}
+
+  <!-- Header -->
+  <section class="py-4" style="background: url('/static/img/road_2.jpg') no-repeat center center/cover; min-height:200px;">
+    <div class="container">
+      <h1 class="text-white text-center">Browse Our Cars</h1>
+    </div>
+  </section>
+
+  <!-- Listings -->
+  <section class="py-5">
+    <div class="container">
+      <div class="row">
+        {{listings}}
+      </div>
+      <div class="row justify-content-center mt-4">
+        {{pagination}}
+      </div>
+    </div>
+  </section>
+
+  {%include partials/footer.html%}
+
+  <script src="/static/js/jquery-3.3.1.min.js"></script>
+  <script src="/static/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

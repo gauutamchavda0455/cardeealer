@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carss Admin | {{form_title}}</title>
+  <link rel="stylesheet" href="/static/css/bootstrap.css">
+  <link rel="stylesheet" href="/static/css/all.css">
+  <style>
+    .sidebar { background: #2c3e50; min-height: 100vh; }
+    .sidebar a { color: #ecf0f1; display: block; padding: 12px 20px; text-decoration: none; border-bottom: 1px solid #34495e; }
+    .sidebar a:hover, .sidebar a.active { background: #34495e; color: #fff; }
+  </style>
+</head>
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-2 sidebar p-0">
+        <div class="text-center py-3 text-white"><h4><i class="fas fa-cog"></i> Carss Admin</h4></div>
+        <a href="/admin/dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+        <a href="/admin/listings" class="active"><i class="fas fa-car"></i> Listings</a>
+        <a href="/admin/advisors"><i class="fas fa-users"></i> Advisors</a>
+        <a href="/admin/contacts"><i class="fas fa-envelope"></i> Contacts</a>
+        <hr style="border-color:#34495e;">
+        <a href="/"><i class="fas fa-globe"></i> View Site</a>
+        <a href="/admin/logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+      </div>
+
+      <div class="col-md-10 p-4">
+        {{messages}}
+        <h2>{{form_title}}</h2>
+        <a href="/admin/listings" class="btn btn-secondary mb-3"><i class="fas fa-arrow-left"></i> Back</a>
+        <hr>
+        <form action="{{form_action}}" method="POST">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Advisor *</label>
+                <select name="advisor_id" class="form-control" required>{{advisor_options}}</select>
+              </div>
+              <div class="form-group">
+                <label>VIN *</label>
+                <input type="text" name="vin" class="form-control" value="{{vin}}" maxlength="17" required>
+              </div>
+              <div class="form-group">
+                <label>Condition *</label>
+                <select name="condition" class="form-control" required>
+                  <option value="">Select</option>
+                  <option value="New" {{condition_new}}>New</option>
+                  <option value="Used" {{condition_used}}>Used</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Body Style *</label>
+                <input type="text" name="body_style" class="form-control" value="{{body_style}}" placeholder="Sedan, SUV, Truck..." required>
+              </div>
+              <div class="form-group">
+                <label>Year *</label>
+                <input type="number" name="year" class="form-control" value="{{year}}" required>
+              </div>
+              <div class="form-group">
+                <label>Make *</label>
+                <input type="text" name="make" class="form-control" value="{{make}}" required>
+              </div>
+              <div class="form-group">
+                <label>Model *</label>
+                <input type="text" name="model" class="form-control" value="{{model}}" required>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Price *</label>
+                <input type="number" name="price" class="form-control" value="{{price}}" required>
+              </div>
+              <div class="form-group">
+                <label>Color</label>
+                <input type="text" name="color" class="form-control" value="{{color}}">
+              </div>
+              <div class="form-group">
+                <label>Interior Color</label>
+                <input type="text" name="interior_color" class="form-control" value="{{interior_color}}">
+              </div>
+              <div class="form-group">
+                <label>Drivetrain</label>
+                <input type="text" name="drivetrain" class="form-control" value="{{drivetrain}}" placeholder="AWD, FWD, RWD">
+              </div>
+              <div class="form-group">
+                <label>Transmission</label>
+                <input type="text" name="transmission" class="form-control" value="{{transmission}}" placeholder="Automatic, Manual">
+              </div>
+              <div class="form-group">
+                <label>Fuel</label>
+                <input type="text" name="fuel" class="form-control" value="{{fuel}}" placeholder="Gasoline, Diesel, Electric">
+              </div>
+              <div class="form-group">
+                <label>Mileage</label>
+                <input type="number" name="mileage" class="form-control" value="{{mileage}}">
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Description</label>
+            <textarea name="description" class="form-control" rows="4">{{description}}</textarea>
+          </div>
+          <div class="form-check mb-3">
+            <input type="checkbox" name="is_published" class="form-check-input" id="published" {{published_checked}}>
+            <label class="form-check-label" for="published">Published</label>
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg"><i class="fas fa-save"></i> Save</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script src="/static/js/jquery-3.3.1.min.js"></script>
+  <script src="/static/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

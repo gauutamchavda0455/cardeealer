@@ -38,19 +38,58 @@ def contact(request):
 
         contact.save()
 
-        # Send email notification
+        # Send email notification to user
+        user_email_message = f'''Hi {name},
+
+Thank you for your test drive request for {listing}!
+
+We have received your request and a sales advisor will contact you shortly.
+
+Your Request Details:
+- Car: {listing}
+- Name: {name}
+- Email: {email}
+- Phone: {phone}
+- Message: {message}
+
+Best regards,
+Carss Auto Dealer Team
+'''
+
         send_mail(
-            # subject
-            'Your Carss Test Drive Request',
-            # message
-            'Hi ' + name + ', we have received your test drive request for ' + \
-            listing + '. A sales advisor will get back to you soon.',
-            # from email
-            'wandev.projects@gmail.com',
-            # recipient_list
-            ['wandev.projects@gmail.com', email],
-            # error check
-            fail_silently=True
+            'Your Carss Test Drive Request - Confirmation',
+            user_email_message,
+            'boy749377@gmail.com',
+            [email],
+            fail_silently=False
+        )
+
+        # Send email notification to admin
+        admin_email_message = f'''NEW TEST DRIVE BOOKING!
+
+A customer has requested a test drive:
+
+Car Details:
+- Car: {listing}
+- Listing ID: {listing_id}
+
+Customer Information:
+- Name: {name}
+- Email: {email}
+- Phone: {phone}
+- Message: {message}
+
+Please contact the customer to schedule the test drive.
+
+Time of Request: {contact.contact_date}
+'''
+
+        send_mail(
+            f'New Test Drive Booking - {name} - {listing}',
+            admin_email_message,
+            'boy749377@gmail.com',
+            ['boy749377@gmail.com'],
+            fail_silently=False
         )
 
         messages.success(

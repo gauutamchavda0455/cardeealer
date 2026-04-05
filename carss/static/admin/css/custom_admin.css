@@ -1,0 +1,50 @@
+/* Custom Admin Styles for Test Drive Bookings */
+
+/* Change "Test Drive Bookings" text color to yellow in the admin home page */
+#content-main a[href*="/admin/contacts/"] {
+    color: #FFD700 !important;
+    font-weight: bold;
+}
+
+#content-main a[href*="/admin/contacts/"]:hover {
+    color: #FFA500 !important;
+    text-decoration: underline;
+}
+
+/* Change model name in breadcrumb and title */
+.breadcrumb a[href*="/admin/contacts/"],
+.content-title {
+    color: #FFD700 !important;
+}
+
+/* Change app label color */
+.model-contact > th > a,
+.model-contact > td > a {
+    color: #FFD700 !important;
+}
+
+/* Change heading in list view */
+#content h1 {
+    color: #FFD700 !important;
+}
+
+/* Change navigation links */
+.nav-tabs li a[href*="/admin/contacts/"] {
+    color: #FFD700 !important;
+}
+
+/* Change all Contact-related links to yellow */
+a:contains("Test Drive Booking"),
+a:contains("Test Drive Bookings") {
+    color: #FFD700 !important;
+}
+
+/* Yellow color for the Contact model section */
+#app-contacts.module {
+    border-left: 4px solid #FFD700;
+}
+
+/* Yellow text for module title */
+#app-contacts h2 {
+    color: #FFD700 !important;
+}
